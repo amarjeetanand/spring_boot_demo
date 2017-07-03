@@ -17,4 +17,8 @@ public class EmployeeService {
     public List<Employee> findAll(){
         return employeeDao.findAll();
     }
+
+    public Employee findById(Integer id) {
+        return employeeDao.findById(id);
+    }
 }

@@ -1,29 +1,52 @@
 package com.everteam.anand.EmployeeMGMT.Model;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "employee")
 public class Employee {
     
+    private Integer id;
+    private String name;
+    private Email email;
+    
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    @Column(name = "id")
+    public Integer getId() {
+        return id;
+    }
     
-    private String name;
-    private String email;
+    public void setId(Integer id) {
+        this.id = id;
+    }
+    
+    @Column(name = "name")
     public String getName() {
         return name;
     }
+    
     public void setName(String name) {
         this.name = name;
     }
-    public String getEmail() {
+    
+    @OneToOne(optional = false, cascade = CascadeType.ALL)
+    @JoinColumn(name = "email_id")
+    public Email getEmail() {
         return email;
     }
-    public void setEmail(String email) {
+    
+    public void setEmail(Email email) {
         this.email = email;
     }
+
 }
