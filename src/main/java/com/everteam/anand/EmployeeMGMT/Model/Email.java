@@ -4,7 +4,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -13,7 +12,6 @@ public class Email {
     
     private int id;
     private String address;
-//    private Employee employee;
     
 
     @Id
@@ -34,13 +32,4 @@ public class Email {
         this.address = address;
     }
  
-/*    @OneToOne(optional = false, mappedBy = "email")
-    public Employee getEmployee() {
-        return employee;
-    }
-    
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
-    }
-    */
 }

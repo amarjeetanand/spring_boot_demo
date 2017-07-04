@@ -13,6 +13,8 @@ public class EmployeeDao {
     
     @Autowired
     EmployeeCrudRepo employeeCrudRepo;
+    @Autowired
+    AddressCrudRepo addressCrudRepo;
     
     public List<Employee> findAll() {
         return employeeCrudRepo.findAll();
@@ -21,4 +23,5 @@ public class EmployeeDao {
     public Employee findById(Integer id) {
         return employeeCrudRepo.findById(id);
     }
+
 }

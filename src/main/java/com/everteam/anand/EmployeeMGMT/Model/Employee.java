@@ -1,5 +1,7 @@
 package com.everteam.anand.EmployeeMGMT.Model;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -7,6 +9,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -16,8 +21,10 @@ public class Employee {
     
     private Integer id;
     private String name;
-    private Email email;
-    
+    private Email email;                        // one to one
+    private List<Address> addresses;            // one to many
+    private List<Department> departments;       // many to many
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -49,4 +56,21 @@ public class Employee {
         this.email = email;
     }
 
+    @OneToMany(mappedBy = "employee_id")
+    public List<Address> getAddresses() {
+        return addresses;
+    }
+
+    public void setAddresses(List<Address> addresses) {
+        this.addresses = addresses;
+    }
+    
+    @ManyToMany
+    public List<Department> getDepartments() {
+        return departments;
+    }
+    
+    public void setDepartments(List<Department> departments) {
+        this.departments = departments;
+    }
 }

@@ -2,8 +2,6 @@ package com.everteam.anand.EmployeeMGMT.Controller;
 
 import java.util.List;
 
-import javax.websocket.server.PathParam;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.everteam.anand.EmployeeMGMT.Model.Employee;
+import com.everteam.anand.EmployeeMGMT.Service.AddressService;
 import com.everteam.anand.EmployeeMGMT.Service.EmployeeService;
 
 @RestController
@@ -21,6 +20,9 @@ public class EmployeeController {
     
     @Autowired
     EmployeeService employeeService;
+    
+    @Autowired
+    AddressService addressService;
 
     @RequestMapping(value = "/listAll", method = RequestMethod.GET)
     public ResponseEntity<List<Employee>> findAll() {
